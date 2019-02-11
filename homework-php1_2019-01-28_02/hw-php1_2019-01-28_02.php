@@ -1,33 +1,28 @@
 <html>
 <head>
-    <title> hw02 </title>
+    <title> hw03-02 </title>
 </head>
 <body>
 
 <?php
 
-/* сделай функцию: */
-/* - которая принимает массив имён картинок */
-/* - и возвращает массив ссылок на эти картинки */
+/* проверяем на существование и подключаем файл с массивом изображений */
+if (is_file(__DIR__ . '/image_array.php')) {
+    include_once __DIR__ . '/image_array.php';
+} else {
+    echo 'Ошибка! Файл с номерами изображений отсутствует.', "\n";
+}
 
-
-include __DIR__ . '/image_array.php';
-
-if (is_array($imgNames)) :
-    foreach ($imgNames as $key => $value) :
-        ?><a href="image.php?id=<?php
-        echo $key;
-        ?>"><img src="images/<?php echo $value ?>" height="200px"/></a>
+/* выводим ссылки на изображения с превью с помощью цикла */
+if (is_array($imgArray)) :
+    foreach ($imgArray as $key => $value) :
+        ?><a href="image.php?id=<?php echo $key;
+    ?>"><img src="images/<?php echo $value ?>" height="200px"/></a>
     <?php
     endforeach;
 else :
-    echo 'Данная переменная не является массивом';
+    echo 'Ошибка! Переменная не является массивом или не существует.';
 endif;
-?>
-
-<?php
-
-
 ?>
 
 </body>
