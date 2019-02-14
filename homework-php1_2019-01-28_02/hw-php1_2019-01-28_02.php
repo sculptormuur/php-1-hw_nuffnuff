@@ -7,8 +7,8 @@
 <?php
 
 /* проверяем на существование и подключаем файл с массивом изображений */
-if (is_file(__DIR__ . '/image_array.php')) {
-    include_once __DIR__ . '/image_array.php';
+if (is_file(__DIR__ . '/images_array.php')) {
+    require_once __DIR__ . '/images_array.php';
 } else {
     echo 'Ошибка! Файл с номерами изображений отсутствует.', "\n";
 }
