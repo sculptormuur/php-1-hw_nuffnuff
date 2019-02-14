@@ -17,9 +17,9 @@ foreach ($guestBookNotes as $oneNote) :
 endforeach;
 ?>
 
-<form action="action.php" method="post" id="message">
-    <input type="text" name="newNote" size="70" value="" form="message" />
-    <input name="submitMessage" type="submit" value="Отправить" form="message">
+<form action="action.php" method="post" id="Note">
+    <input type="text" name="newNote" size="70" value="" form="Note" />
+    <input name="submitNote" type="submit" value="Отправить" form="Note">
 </form>
 <br/>
 

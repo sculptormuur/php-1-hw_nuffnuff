@@ -8,13 +8,11 @@ $guestBookNotes = readGuestBook();
 assert(isset($guestBookNotes));
 assert(is_array($guestBookNotes));
 
-if (!empty($_POST['newNote'])) {
+if (!empty($_POST['newNote'])||(0 == $_POST['newNote'])) {
     $guestBookNotes[] = $_POST['newNote'];
     $uniString = implode(PHP_EOL, $guestBookNotes); // соединяем элементы в строку
     file_put_contents(__DIR__ . '/files/guest_book.txt',
         $uniString, FILE_USE_INCLUDE_PATH); // перезаписываем исходный файл
 }
 
-var_dump($guestBookNotes);
-
-// header('Location: http://homework.com/homework-php1_2019-01-31_01/hw-php1_2019-01-31_01.php');
+header('Location: http://homework.com/homework-php1_2019-01-31_01/hw-php1_2019-01-31_01.php');

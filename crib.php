@@ -18,6 +18,7 @@
 ===================================
 ========== ♣ PHP-1 № 4 ♣ =========
 ===================================
+
 ◙ WHILE                 //  * @link http://php.net/manual/ru/control-structures.while.php
 $i = 1;
 while ($i <= 10) {
@@ -48,8 +49,10 @@ do {
                                         // до конца файла
                                     // * @link http://php.net/manual/ru/function.fgets.php
 • file($path) // Чтение целиком файла в массив. Каждый элемент массива – строка.
+        // FILE_IGNORE_NEW_LINES //Пропускать новую строку в конце каждого элемента массива
 • file_get_contents($path) // Чтение целиком файла в строку. Самый
                                         // оптимальный по производительности вариант
+                        // * @link http://php.net/manual/ru/function.file.php
 • fwrite($res, $data) // Бинарно-безопасная запись в файл
                         // * @link http://php.net/manual/ru/function.fwrite.php
 • file_put_contents($path, $data, FLAGS, $context) // Пишет данные в файл
