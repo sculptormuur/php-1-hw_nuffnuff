@@ -14,7 +14,6 @@
 // unset($_FILES['newFile']);
 
 ?>
-<!-- надо ли делать форму на ЭТОЙ странице? -->
 
 <form action="upload.php" method="post" id="imgFile" enctype="multipart/form-data">
     <input type="file" name="newFile" size="70" value="" form="imgFile" required/>
@@ -22,19 +21,23 @@
 </form>
 
 <?php
-const IMG_ADDRESS_PART = __DIR__ . '/images/' . 'img';
+// const IMG_ADDRESS_PART = __DIR__ . '/images/' . 'img';
 
-if (isset($_FILES['newFile']) && (0 == $_FILES['newFile']['error'])) {
+if (isset($_FILES['newFile']) && (0 == $_FILES['newFile']['error'])) { // некрасиво
     var_dump($_FILES['newFile']);
-    $i = 0;
-    $newImgAddress = IMG_ADDRESS_PART . $i . '.jpg';
-    while (file_exists($newImgAddress)) {
-        $i++;
-        $newImgAddress = IMG_ADDRESS_PART . $i . '.jpg';
-    }
-    $uploadedFile = move_uploaded_file($_FILES['newFile']['tmp_name'], $newImgAddress);
-    if (file_exists($newImgAddress)) {
-        echo 'Файл загружен.';
+    if (1 == (preg_match('/\.(jpe??g|png|gif|bmp|tif{1,2})$/i',
+            $_FILES['newFile']['name'], $extensionArr))) {
+        var_dump($extensionArr);
+//        $newImgAddress = __DIR__ . '/images/' . uniqid() . $extensionArr[0];
+        $newImgAddress = __DIR__ . '/images/' . '5c6ddc7f77678' . $extensionArr[0];
+        echo $newImgAddress, ' ';
+        $uploadedFile = move_uploaded_file($_FILES['newFile']['tmp_name'], $newImgAddress);
+
+        if (file_exists($newImgAddress)) { // если с таким именем уже был файл7
+            echo 'Файл загружен.';
+        } else {
+            echo 'Ошибка! Файл не загружен.';
+        }
     } else {
         echo 'Ошибка! Файл не загружен.';
     }
