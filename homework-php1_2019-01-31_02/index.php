@@ -1,29 +1,23 @@
 <html>
 <head>
-    <title> hw04-02 </title>
+    <title> hw04-02 gallery </title>
 </head>
 <body>
 
 <?php
 
+/* Собираем названия файлов из папки в массив, удаляем лишние элементы. */
 $imgNamesArray = scandir(__DIR__ . '/images/');
 unset($imgNamesArray[(array_search('.', $imgNamesArray))]);
 unset($imgNamesArray[(array_search('..', $imgNamesArray))]);
-array_values($imgNamesArray);
 
-/* foreach($imgNamesArray as $index => $imgName) :
-    if(1 < $index) :
-        ><img src="images/<?php echo $imgNamesArray[$i]; ?>" height="150px"/> <?php
+/* Ограничиваем по расширению возможность вывода в галерею не изображения. */
+$pattern = '/\.(jpe??g|png|gif|bmp|tif{1,2})$/i';
+foreach ($imgNamesArray as $imgName) :
+    if (1 == (preg_match($pattern, $imgName))) :
+        ?><img src="images/<?php echo $imgName; ?>" height="150px" /> <?php
     endif;
-   endforeach; */
-
-var_dump($imgNamesArray);
-
-$i = 0;
-while (count($imgNamesArray) > $i) :
-    ?><img src="images/<?php echo $imgNamesArray[$i]; ?>" height="150px"/> <?php
-    $i++;
-endwhile;
+endforeach;
 ?>
 
 </body>

@@ -42,7 +42,10 @@ const PART2 = 'hw-php1_';
 <ul><?php $d = '2019-01-31_'; $t = 'homework 2019.01.31 '; ?>
     <li><a href="<?php echo PARTDZ, $d; ?>tz.html">Задание</a></li>
     <li><a href="<?php echo PART1, $d, '01/', PART2, $d, '01.php'; ?>"><?php echo $t; ?>01</a></li>
-    <li><a href="<?php echo PART1, $d, '02/', PART2, $d, '02.php'; ?>"><?php echo $t; ?>02</a></li>
+    <li><?php echo $t; ?>02:
+        <a href="<?php echo PART1, $d, '02/', 'index.php'; ?>">/index.php</a>, 
+        <a href="<?php echo PART1, $d, '02/', 'upload.php'; ?>">/upload.php</a>
+    </li>
     <li><a href="<?php echo PART1, $d, '03/', PART2, $d, '03.php'; ?>"><?php echo $t; ?>03</a></li>
     <li><a href="<?php echo PART1, $d, '04/', PART2, $d, '04.php'; ?>"><?php echo $t; ?>04*</a></li>
 </ul>
