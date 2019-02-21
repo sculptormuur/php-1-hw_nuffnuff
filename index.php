@@ -11,6 +11,18 @@ const PART2 = 'hw-php1_';
 /* $d - date, $t - title */
 ?>
 
+<h3> Домашнее задание №9 от 2019.02.18: </h3>
+<ul><?php $d = '2019-02-18_'; $t = 'homework 2019.02.18 '; ?>
+    <li><a href="<?php echo PARTDZ, $d; ?>tz.html">Задание</a></li>
+</ul>
+
+
+<h3> Домашнее задание №8 от 2019.02.14: </h3>
+<ul><?php $d = '2019-02-14_'; $t = 'homework 2019.02.14 '; ?>
+    <li><a href="<?php echo PARTDZ, $d; ?>tz.html">Задание</a></li>
+</ul>
+
+
 <h3> Домашнее задание №7 от 2019.02.11: </h3>
 <ul><?php $d = '2019-02-11_'; $t = 'homework 2019.02.11 '; ?>
     <li><a href="<?php echo PARTDZ, $d; ?>tz.html">Задание</a></li>
@@ -41,13 +53,13 @@ const PART2 = 'hw-php1_';
 <h3> Домашнее задание №4 от 2019.01.31: </h3>
 <ul><?php $d = '2019-01-31_'; $t = 'homework 2019.01.31 '; ?>
     <li><a href="<?php echo PARTDZ, $d; ?>tz.html">Задание</a></li>
-    <li><a href="<?php echo PART1, $d, '01/', PART2, $d, '01.php'; ?>"><?php echo $t; ?>01</a></li>
+    <li><a href="<?php echo PART1, $d, '01/', 'index.php'; ?>"><?php echo $t; ?>01</a></li>
     <li><?php echo $t; ?>02:
-        <a href="<?php echo PART1, $d, '02/', 'index.php'; ?>">/index.php</a>, 
+        <a href="<?php echo PART1, $d, '02/', 'index.php'; ?>">/index.php</a>,
         <a href="<?php echo PART1, $d, '02/', 'upload.php'; ?>">/upload.php</a>
     </li>
-    <li><a href="<?php echo PART1, $d, '03/', PART2, $d, '03.php'; ?>"><?php echo $t; ?>03</a></li>
-    <li><a href="<?php echo PART1, $d, '04/', PART2, $d, '04.php'; ?>"><?php echo $t; ?>04*</a></li>
+    <li><a href="<?php echo PART1, $d, '03/', 'upload.php'; ?>"><?php echo $t; ?>03</a></li>
+    <li><a href="<?php echo PART1, $d, '04/', 'upload.php'; ?>"><?php echo $t; ?>04*</a></li>
 </ul>
 
 <h3> Домашнее задание №3 от 2019.01.28: </h3>

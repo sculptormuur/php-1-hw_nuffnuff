@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> hw04-02 upload </title>
+    <title> hw04-03 upload </title>
 </head>
 <body>
 
@@ -19,35 +19,24 @@ if (isset($_FILES['newFile'])) {
     if (0 == $errorCode) {
         /* Проверка во избежание загрузки не изображения. */
         $imgType = exif_imagetype($_FILES['newFile']['tmp_name']);
-        $imgExtension = image_type_to_extension($imgType);
+
+        $imgName = $_FILES['newFile']['name'];
 
         assert(false != $imgType);
         if (false != $imgType) {
-            $newImgAddress = __DIR__ . '/images/' . uniqid() . $imgExtension;
+            $newImgAddress = __DIR__ . '/images/' . $imgName;
 
-            /* Предохранение от перезаписи в случае маловероятного совпадения имени файла. */
-            $i = 0;
-            while (true == (file_exists($newImgAddress))) {
-                $newImgAddress = __DIR__ . '/images/' . uniqid() . $imgExtension;
-                $i++;
-                assert(100 >= $i);
-                if (100 <= $i) { // Прерывание бесконечного цикла на всякий случай.
-                    $alert = 1;
-                    break;
-                }
-            }
-
-            /* Если новое имя для файла не совпадает с уже занятыми, то загружаем файл. */
-            if (!isset($alert)) {
+            /* Если новое имя для файла не совпадает с уже занятыми, то перемещаем файл. */
+            if (!file_exists($newImgAddress)) {
                 $uploadedFile = move_uploaded_file($_FILES['newFile']['tmp_name'], $newImgAddress);
-                /* Проверка на случай ошибки при загрузке. */
+                /* Проверка на случай ошибки при перемещении. */
                 if (file_exists($newImgAddress)) {
                     echo 'Файл загружен.';
                 } else {
                     echo UPLOAD_ERROR;
                 }
             } else {
-                echo UPLOAD_ERROR;
+                echo 'Ошибка! Файл с таким именем уже существует.';
             }
         } else {
             echo 'Ошибка! Файл не является изображением.';
