@@ -15,4 +15,4 @@ if (!empty($_POST['newNote'])||(0 == $_POST['newNote'])) {
         $uniString, FILE_USE_INCLUDE_PATH); // перезаписываем исходный файл
 }
 
-header('Location: http://homework.com/homework-php1_2019-01-31_01/hw-php1_2019-01-31_01.php');
+header('Location: http://homework.com/homework-php1_2019-01-31_01/index.php');
