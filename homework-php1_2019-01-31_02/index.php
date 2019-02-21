@@ -5,16 +5,17 @@
 <body>
 
 <?php
+const IMG_DIR = __DIR__ . '/images/';
 
 /* Собираем названия файлов из папки в массив, удаляем лишние элементы. */
-$imgNamesArray = scandir(__DIR__ . '/images/');
+$imgNamesArray = scandir(IMG_DIR);
 unset($imgNamesArray[(array_search('.', $imgNamesArray))]);
 unset($imgNamesArray[(array_search('..', $imgNamesArray))]);
 
-/* Ограничиваем по расширению возможность вывода в галерею не изображения. */
-$pattern = '/\.(jpe??g|png|gif|bmp|tif{1,2})$/i';
+/* Ограничиваем по типу возможность вывода в галерею не изображения. */
 foreach ($imgNamesArray as $imgName) :
-    if (1 == (preg_match($pattern, $imgName))) :
+    $imgType = exif_imagetype(IMG_DIR . $imgName);
+    if (false != $imgType) :
         ?><img src="images/<?php echo $imgName; ?>" height="150px" /> <?php
     endif;
 endforeach;
