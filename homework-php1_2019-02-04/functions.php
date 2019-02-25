@@ -1,4 +1,11 @@
 <?php
+/* 1.1. Функция getUsersList() пусть возвращает массив всех пользователей и хэшей их паролей
+ * 1.2. Функция existsUser($login) проверяет - существует ли пользователь с заданным логином?
+ * 1.3. Функция сheckPassword($login, $password) пусть возвращает true тогда, когда
+ * существует пользователь с указанным логином и введенный им пароль прошел проверку
+ * 2. Добавьте функцию getCurrentUser() которая возвращает либо имя вошедшего
+ * на сайт пользователя, либо null
+ * */
 
 function getUsersList()
 {
@@ -29,8 +36,7 @@ function checkPassword($login, $password)
         return false;
     } else {
         $usersArray = getUsersList();
-        $savedPasswordHash = $usersArray[$login];
-        if (true != password_verify($password, $savedPasswordHash)) {
+        if (true != password_verify($password, $usersArray[$login])) {
             return false;
         } else {
             return true;
